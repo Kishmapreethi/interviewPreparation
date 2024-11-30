@@ -120,3 +120,118 @@ The **Diffing Algorithm** is part of React’s reconciliation process. It compar
 | **Access**           | Accessed via `this.state` (class) or `useState` (function). | Accessed via `this.props` (class) or function arguments.  |
 | **Examples**         | `this.state = { count: 0 };` <br> `const [count, setCount] = useState(0);` | `<ChildComponent prop1={this.state.value} />`            |
 | **Usage**            | Best for managing local data and user interactions.   | Best for passing static or dynamic values and callbacks.  |
+
+## 9. What is Prop Drilling?
+
+**Prop Drilling** is a process in React where data is passed from a parent component to deeply nested child components through intermediary components, even if those intermediary components do not need the data. This can make the code harder to maintain and understand, especially in large applications.
+
+### Example of Prop Drilling:
+```jsx
+function App() {
+  const user = { name: "John", age: 30 };
+  return <Parent user={user} />;
+}
+
+function Parent({ user }) {
+  return <Child user={user} />;
+}
+
+function Child({ user }) {
+  return <GrandChild user={user} />;
+}
+
+function GrandChild({ user }) {
+  return <div>Hello, {user.name}!</div>;
+}
+
+## How to Avoid Prop Drilling in React
+
+Prop drilling can lead to complex and hard-to-maintain code, especially in large applications. Here are effective strategies to avoid it:
+
+---
+
+### 1. **Context API**  
+The Context API allows you to share values across components without passing props through each level of the tree.
+
+###2. **StateManagement libraries like React,Recoil**
+###3. **HOC**
+###4. **Custom HOOKs**
+
+---
+
+## 10. What are Fragments?
+
+React Fragments are a way to group a list of children elements without adding extra nodes to the DOM. This is particularly useful when rendering multiple elements from a component that should not introduce unnecessary elements to the DOM tree.
+
+### Key Points about React Fragments:
+
+1. **Purpose:**
+   - Fragments let you group a list of children without adding extra nodes to the DOM. This helps in maintaining a clean and minimal DOM structure.
+
+2. **Syntax:**
+   - You can use the `<React.Fragment>` or the shorthand `<>` syntax.
+
+3. **Example Using `<React.Fragment>`:**
+
+   ```jsx
+   import React from 'react';
+
+   function List() {
+       return (
+           <>
+               <li>Item 1</li>
+               <li>Item 2</li>
+               <li>Item 3</li>
+           </>
+       );
+   }
+
+---
+
+## 11. What are Pure Components?
+
+A Pure Component in React is a type of component that optimizes performance by reducing unnecessary re-renders. It does this by implementing a shallow comparison on the component's props and state. If the props and state haven't changed, the component will not re-render.
+
+### Key Features of Pure Components:
+
+1. **Shallow Comparison:**
+   - Pure Components perform a shallow comparison of the current props and state with the next props and state. If there are no changes, the component will not re-render.
+
+2. **Increased Performance:**
+   - By preventing unnecessary re-renders, Pure Components can improve the performance of your application, especially for components that receive complex props or state.
+
+3. **Usage:**
+   - To create a Pure Component, you can extend `React.PureComponent` instead of `React.Component`.
+
+### Example:
+
+```jsx
+import React, { PureComponent } from 'react';
+
+class MyComponent extends PureComponent {
+    render() {
+        console.log('Rendering MyComponent');
+        return <div>{this.props.value}</div>;
+    }
+}
+
+// Usage
+<MyComponent value="Hello" />
+
+---
+
+## 10. Difference between class and functional components?
+
+| Feature                    | Class Components                         | Functional Components                    |
+|----------------------------|------------------------------------------|------------------------------------------|
+| **Definition**              | Defined using the `class` keyword and extends `React.Component` | Defined as a JavaScript function          |
+| **State**                   | Can have state, using `this.state`       | Uses `useState` hook for state           |
+| **Lifecycle Methods**       | Can use lifecycle methods like `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount` | Uses `useEffect` hook for lifecycle logic |
+| **Props**                   | Accessed using `this.props`              | Accessed directly as function arguments  |
+| **Binding**                 | Requires manual binding of `this` for event handlers | Does not need `this` binding             |
+| **Performance**             | Slightly slower due to the overhead of classes | Generally faster as it has less overhead |
+| **Syntax Complexity**       | More verbose with `class` keyword and `this` keyword | Simpler and cleaner syntax               |
+| **Hooks**                   | Cannot use hooks directly                | Can use hooks like `useState`, `useEffect`|
+| **Reusability**             | Can be less reusable due to class syntax | Easier to reuse with hooks and simpler syntax |
+| **Code Readability**        | Can be harder to read due to complexity  | More concise and easier to read          |
+| **Component Instantiation**| Instantiated using `new` keyword         | Instantiated like a normal function      |
