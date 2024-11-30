@@ -125,37 +125,16 @@ The **Diffing Algorithm** is part of React’s reconciliation process. It compar
 
 **Prop Drilling** is a process in React where data is passed from a parent component to deeply nested child components through intermediary components, even if those intermediary components do not need the data. This can make the code harder to maintain and understand, especially in large applications.
 
-### Example of Prop Drilling:
-```jsx
-function App() {
-  const user = { name: "John", age: 30 };
-  return <Parent user={user} />;
-}
-
-function Parent({ user }) {
-  return <Child user={user} />;
-}
-
-function Child({ user }) {
-  return <GrandChild user={user} />;
-}
-
-function GrandChild({ user }) {
-  return <div>Hello, {user.name}!</div>;
-}
-
-## How to Avoid Prop Drilling in React
+### How to avoid prop drilling?
 
 Prop drilling can lead to complex and hard-to-maintain code, especially in large applications. Here are effective strategies to avoid it:
-
----
 
 ### 1. **Context API**  
 The Context API allows you to share values across components without passing props through each level of the tree.
 
-###2. **StateManagement libraries like React,Recoil**
-###3. **HOC**
-###4. **Custom HOOKs**
+### 2. **StateManagement libraries like React,Recoil**
+### 3. **HOC**
+### 4. **Custom HOOKs**
 
 ---
 
@@ -203,24 +182,9 @@ A Pure Component in React is a type of component that optimizes performance by r
 3. **Usage:**
    - To create a Pure Component, you can extend `React.PureComponent` instead of `React.Component`.
 
-### Example:
-
-```jsx
-import React, { PureComponent } from 'react';
-
-class MyComponent extends PureComponent {
-    render() {
-        console.log('Rendering MyComponent');
-        return <div>{this.props.value}</div>;
-    }
-}
-
-// Usage
-<MyComponent value="Hello" />
-
 ---
 
-## 10. Difference between class and functional components?
+## 12. Difference between class and functional components?
 
 | Feature                    | Class Components                         | Functional Components                    |
 |----------------------------|------------------------------------------|------------------------------------------|
