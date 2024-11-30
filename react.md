@@ -29,19 +29,19 @@ JSX, or JavaScript XML, is a syntax extension for JavaScript that allows you to 
 
 ### Key Points about JSX:
 
-## 1. HTML-like Syntax in JavaScript:
+1. **HTML-like Syntax in JavaScript**
 
 With JSX, you can write elements that look like HTML directly within your JavaScript code. This makes the code more readable and easier to understand.
 
-## 2. JavaScript Expressions in JSX:
+2. **JavaScript Expressions in JSX:**
 
 You can embed JavaScript expressions within JSX using curly braces `{}`. This allows you to dynamically render content.
 
-## 3. Babel Transpilation:
+3. **Babel Transpilation:**
 
 Since JSX is not valid JavaScript, it needs to be transpiled into regular JavaScript using a tool like Babel. Babel converts JSX into `React.createElement()` calls, which the React library can understand.
 
-## 4. Improved Readability:
+4. **Improved Readability:**
 
 By combining HTML and JavaScript in a single file, JSX improves the readability of the code and makes it easier to understand the structure of your UI components.
 
@@ -110,6 +110,20 @@ const oldTree = <div><h1>Hello, world!</h1></div>;
 const newTree = <div><h1>Hello, React!</h1></div>;
 
 // React will update only the text inside the <h1> element
+
+## 8.Difference between state and props?
+
+| Feature            | State                                                | Props                                                    |
+|--------------------|------------------------------------------------------|----------------------------------------------------------|
+| Definition         | State is a built-in object that stores property values that belong to a component. | Props are read-only attributes passed from a parent component to a child component. |
+| Mutability         | Mutable: State can be changed using `setState`.      | Immutable: Props cannot be changed by the receiving component. |
+| Purpose            | Used to manage the dynamic data of a component that can change over time. | Used to pass data and event handlers down to child components. |
+| Scope              | Local to the component and managed within the component. | Passed down from parent components and used by child components. |
+| Initialization     | Initialized in the component's constructor.          | Passed to the component as attributes in JSX.             |
+| Updates            | State updates can be asynchronous and are managed by the component. | Props updates are handled by the parent component and are passed down. |
+| Access             | Accessed using `this.state` within the component.    | Accessed using `this.props` within the component.         |
+| Examples           | `this.state = { count: 0 };`                         | `<ChildComponent prop1={this.state.value} />`             |
+| Usage              | Best for managing local component data and user interactions. | Best for passing static or dynamic values and callbacks.  |
 
 
 
