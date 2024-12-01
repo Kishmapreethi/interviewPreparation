@@ -81,3 +81,24 @@ function remDupUsingFor(array) {
 }
 
 console.log("remove dup  using for with optimized", remDupUsingFor(arr));
+
+//remove dup in Objects/complex datattypes using JSon.stringify
+
+function removeDuplicateObjects(arr){
+    const uniqueSet = new Set(arr.map((item)=>JSON.stringify(item)));
+    return Array.from(uniqueSet).map((item)=>JSON.parse(item));
+}
+
+const array = [{a: 1}, {b: 2}, {a: 1}, {a: 3}];
+console.log('rem dup objects', removeDuplicateObjects(array));
+
+//to check whether an array contains dup
+
+function isDuplicate(array){
+    return array.length !== new Set(array).size
+};
+
+console.log('is duplicate', isDuplicate(arr));
+console.log('is duplicate', isDuplicate(array));
+
+
